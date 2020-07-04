@@ -19,33 +19,30 @@ export default function Logon() {
     try {
       const response = await api.post('sessions', { id });
 
-      console.log(response.data.name);
-
-      localStorage.setItem('onId', id);
+      localStorage.setItem('ongId', id);
       localStorage.setItem('ongName', response.data.name);
 
       history.push('/profile');
     } catch (err) {
-      alert('Falha no login, tente novamente');
+      alert('Falha no login, tente novamente.');
     }
   }
 
   return (
     <div className="logon-container">
       <section className="form">
-        <img src={logoImg} alt="Be the Hero" />
+        <img src={logoImg} alt="Be The Hero"/>
 
         <form onSubmit={handleLogin}>
           <h1>Faça seu logon</h1>
 
-          <input
+          <input 
             placeholder="Sua ID"
             value={id}
-            onChange={(e) => setId(e.target.value)}
+            onChange={e => setId(e.target.value)}
           />
-          <button className="button" type="submit">
-            Entrar
-          </button>
+
+          <button className="button" type="submit">Entrar</button>
 
           <Link className="back-link" to="/register">
             <FiLogIn size={16} color="#E02041" />

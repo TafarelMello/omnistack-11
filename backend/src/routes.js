@@ -9,19 +9,13 @@ const routes = express.Router();
 
 routes.post('/sessions', SessionController.create);
 
-// LIST ALL ONGS
 routes.get('/ongs', OngController.index);
-// CREATE ONGS
 routes.post('/ongs', OngController.create);
 
-// GET ALL PROFILE
 routes.get('/profile', ProfileController.index);
 
-// CREATE INCIDENTS
-routes.post('/incidents', IncidentController.create);
-// LIST ALL INCIDENTS
 routes.get('/incidents', IncidentController.index);
-// DELETE INCIDENTS
+routes.post('/incidents', IncidentController.create);
 routes.delete('/incidents/:id', IncidentController.delete);
 
 module.exports = routes;

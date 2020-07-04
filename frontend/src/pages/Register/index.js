@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-
 import { Link, useHistory } from 'react-router-dom';
-import { FiArrowDownLeft } from 'react-icons/fi';
+import { FiArrowLeft } from 'react-icons/fi';
 
 import api from '../../services/api';
-
 import './styles.css';
+
 import logoImg from '../../assets/logo.svg';
 
 export default function Register() {
@@ -28,7 +27,6 @@ export default function Register() {
       uf,
     };
 
-    // chamando a api axion
     try {
       const response = await api.post('ongs', data);
 
@@ -44,55 +42,53 @@ export default function Register() {
     <div className="register-container">
       <div className="content">
         <section>
-          <img src={logoImg} alt="Be The Hero" />
+          <img src={logoImg} alt="Be The Hero"/>
 
           <h1>Cadastro</h1>
-          <p>
-            Faça seu cadastro, entre na plataforma e ajude pessoas a encontrarem
-            os casos da sua ONG.
-          </p>
+          <p>Faça seu cadastro, entre na plataforma e ajude pessoas a encontrarem os casos da sua ONG.</p>
 
           <Link className="back-link" to="/">
-            <FiArrowDownLeft size={16} color="#E02041" />
-            voltar para o logon
+            <FiArrowLeft size={16} color="#E02041" />
+            Não tenho cadastro
           </Link>
         </section>
 
         <form onSubmit={handleRegister}>
-          <input
+          <input 
             placeholder="Nome da ONG"
             value={name}
-            onChange={(e) => setName(e.target.value)}
+            onChange={e => setName(e.target.value)}
           />
-          <input
-            type="email"
+
+          <input 
+            type="email" 
             placeholder="E-mail"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={e => setEmail(e.target.value)}
           />
-          <input
-            placeholder="Whatsapp"
+
+          <input 
+            placeholder="WhatsApp"
             value={whatsapp}
-            onChange={(e) => setWhatsapp(e.target.value)}
+            onChange={e => setWhatsapp(e.target.value)}
           />
 
           <div className="input-group">
-            <input
+            <input 
               placeholder="Cidade"
               value={city}
-              onChange={(e) => setCity(e.target.value)}
+              onChange={e => setCity(e.target.value)}
             />
 
-            <input
-              placeholder="UF"
+            <input 
+              placeholder="UF" 
               style={{ width: 80 }}
-              onChange={(e) => setUf(e.target.value)}
+              value={uf}
+              onChange={e => setUf(e.target.value)}
             />
           </div>
 
-          <button className="button" type="submit">
-            Submit
-          </button>
+          <button className="button" type="submit">Cadastrar</button>
         </form>
       </div>
     </div>
